@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcjr24qrisobw"]
+
+[ext_resource type="Script" uid="uid://b4qciue5oqeg8" path="res://Projects/Default Project Template/Scripts/SavePoint.gd" id="1_bfilb"]
+[ext_resource type="Texture2D" uid="uid://cwf5rycqel70y" path="res://icon.svg" id="2_lh88a"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kb8ow"]
+albedo_color = Color(0.47634, 0.637492, 0.898339, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4r4qj"]
+radius = 1.17409
+
+[node name="SavePoint" type="Node3D"]
+transform = Transform3D(1, -2.98023e-08, 0, 2.98023e-08, 1, -5.96046e-08, 2.98023e-08, 2.98023e-08, 1, -2.47695, 0.450083, -2.50185)
+script = ExtResource("1_bfilb")
+
+[node name="Shape" type="CSGBox3D" parent="."]
+transform = Transform3D(-0.298858, 0.666351, -0.683125, -0.433837, -0.732461, -0.524677, -0.849982, 0.139561, 0.50799, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_kb8ow")
+size = Vector3(0.504883, 0.516113, 0.57666)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_4r4qj")
+
+[node name="Indicator" type="Sprite3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(0.255, -8.88178e-16, 0, 1.34115e-15, 0.255, 0, 0, 0, 0.255, 0, 0.721544, 0)
+billboard = 1
+texture = ExtResource("2_lh88a")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

@@ -1,0 +1,238 @@
+[gd_scene load_steps=20 format=3 uid="uid://b1f23cmle05ms"]
+
+[ext_resource type="Script" uid="uid://d2vm35wa1ncfq" path="res://Scripts/Entity Stuff/PlayerEntity.gd" id="1_j7c82"]
+[ext_resource type="Texture2D" uid="uid://bggtguw2dfspm" path="res://Projects/Default Project Template/Sprites/LPC Sprites/Character Bases/tannedmale.png" id="1_lob40"]
+[ext_resource type="Script" uid="uid://csqju3dwditxy" path="res://Scripts/Entity Stuff/Entity Movement/CBEntityMovement.gd" id="2_prtol"]
+[ext_resource type="Script" uid="uid://85qk5klhmhdc" path="res://Scripts/Utility/CameraMovement.gd" id="3_v8qru"]
+[ext_resource type="PackedScene" uid="uid://b5yuhasyou7xr" path="res://Projects/Default Project Template/Scenes/Skill Scenes/attack_skill.tscn" id="4_cu4es"]
+[ext_resource type="Script" uid="uid://dqqy02766jq7g" path="res://Scripts/Entity Stuff/Battle Entity/AbsBattleEntity.gd" id="5_tucqh"]
+[ext_resource type="Script" uid="uid://d02m1qqxdqgtx" path="res://Scripts/Entity Stuff/AnimationController.gd" id="6_ewiba"]
+
+[sub_resource type="Animation" id="Animation_hq1fg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [26]
+}
+
+[sub_resource type="Animation" id="Animation_y1ovt"]
+resource_name = "idle_down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [26]
+}
+
+[sub_resource type="Animation" id="Animation_fm3vq"]
+resource_name = "idle_left"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [13]
+}
+
+[sub_resource type="Animation" id="Animation_4183k"]
+resource_name = "idle_right"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333334),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [39]
+}
+
+[sub_resource type="Animation" id="Animation_14nn6"]
+resource_name = "idle_up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_yxxji"]
+resource_name = "walk_down"
+length = 1.067
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.4, 0.533333, 0.666667, 0.8, 0.933333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [131, 132, 133, 134, 135, 136, 137, 138]
+}
+
+[sub_resource type="Animation" id="Animation_rkm7x"]
+resource_name = "walk_left"
+length = 1.067
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.4, 0.533333, 0.666667, 0.8, 0.933333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [118, 119, 120, 121, 123, 122, 125, 124]
+}
+
+[sub_resource type="Animation" id="Animation_dmiwq"]
+resource_name = "walk_right"
+length = 1.0667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.4, 0.533333, 0.666667, 0.8, 0.933333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [144, 145, 146, 147, 148, 149, 150, 151]
+}
+
+[sub_resource type="Animation" id="Animation_6hhbu"]
+resource_name = "walk_up"
+length = 1.067
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.4, 0.533333, 0.666667, 0.8, 0.933333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [105, 106, 107, 108, 109, 110, 111, 112]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yri2a"]
+_data = {
+&"RESET": SubResource("Animation_hq1fg"),
+&"idle_down": SubResource("Animation_y1ovt"),
+&"idle_left": SubResource("Animation_fm3vq"),
+&"idle_right": SubResource("Animation_4183k"),
+&"idle_up": SubResource("Animation_14nn6"),
+&"walk_down": SubResource("Animation_yxxji"),
+&"walk_left": SubResource("Animation_rkm7x"),
+&"walk_right": SubResource("Animation_dmiwq"),
+&"walk_up": SubResource("Animation_6hhbu")
+}
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_023ol"]
+radius = 0.15
+height = 0.5
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_n2igo"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:scale")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("CharacterBody:position")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath("CharacterBody:rotation")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+properties/5/path = NodePath("CharacterBody:scale")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+
+[node name="DefaultPlayer" type="Node3D" node_paths=PackedStringArray("entityMovement", "battleEntity") groups=["PlayerCharacters"]]
+script = ExtResource("1_j7c82")
+entityMovement = NodePath("CharacterBody/AbsEntityMovement")
+battleEntity = NodePath("CharacterBody/AbsBattleEntity")
+
+[node name="CharacterBody" type="CharacterBody3D" parent="." groups=["PlayerCharacters"]]
+
+[node name="AbsEntityMovement" type="Node3D" parent="CharacterBody" node_paths=PackedStringArray("cameraArm", "camera", "characterBody", "animationController", "playerEntity")]
+script = ExtResource("2_prtol")
+cameraArm = NodePath("../CameraArm")
+camera = NodePath("../CameraArm/MainCamera")
+characterBody = NodePath("..")
+speedFactor = 100.0
+animationController = NodePath("../SpriteBuilder/BodySprite/AnimationPlayer")
+playerEntity = NodePath("../..")
+
+[node name="AbsBattleEntity" type="Node3D" parent="CharacterBody" node_paths=PackedStringArray("playerEntity")]
+script = ExtResource("5_tucqh")
+playerEntity = NodePath("../..")
+skills = [ExtResource("4_cu4es")]
+
+[node name="SpriteBuilder" type="Node3D" parent="CharacterBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+
+[node name="BodySprite" type="Sprite3D" parent="CharacterBody/SpriteBuilder"]
+billboard = 1
+texture_filter = 0
+texture = ExtResource("1_lob40")
+hframes = 13
+vframes = 21
+frame = 26
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody/SpriteBuilder/BodySprite"]
+libraries = {
+"": SubResource("AnimationLibrary_yri2a")
+}
+script = ExtResource("6_ewiba")
+
+[node name="CameraArm" type="Node3D" parent="CharacterBody"]
+script = ExtResource("3_v8qru")
+
+[node name="MainCamera" type="Camera3D" parent="CharacterBody/CameraArm"]
+transform = Transform3D(-1, 5.92866e-08, -6.42483e-08, 0, 0.734915, 0.67816, 8.74228e-08, 0.67816, -0.734915, 0, 1.91009, -1.80806)
+current = true
+
+[node name="Collider" type="CollisionShape3D" parent="CharacterBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+shape = SubResource("CapsuleShape3D_023ol")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_n2igo")
