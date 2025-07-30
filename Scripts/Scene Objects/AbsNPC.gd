@@ -8,11 +8,11 @@ func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 func onPlayerEntered() :
-	GameManager.playerControls.currentNPC = self
+	GameManager.playerControls.currentInteraction = self
 	
 func onPlayerExit() :
-	if GameManager.playerControls.currentNPC == self :
-		GameManager.playerControls.currentNPC = null
+	if GameManager.playerControls.currentInteraction == self :
+		GameManager.playerControls.currentInteraction = null
 		
 		if Dialogic.current_timeline != null and Dialogic.current_timeline.resource_path == dialoguePath :
 				Dialogic.end_timeline()

@@ -12,7 +12,7 @@ extends Node
 
 #temporarily modified variables
 var canSave = false
-var currentNPC = null
+var currentInteraction = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -33,6 +33,8 @@ func processInput(delta) :
 func doAttackButton(delta) :
 	if Input.is_action_just_pressed("DefaultAttack") :
 		mainPlayer.battleEntity.defaultAttack()
+		return true
+	return false
 	
 func doMovement(delta) :
 	var vertical = Input.get_axis("MoveDown", "MoveUp")
@@ -43,8 +45,8 @@ func doMovement(delta) :
 	
 func doAcceptButton(delta) :
 	if Input.is_action_just_pressed("ActionAccept") :
-		if currentNPC != null :
-			currentNPC.onAccept()
+		if currentInteraction != null :
+			currentInteraction.onAccept()
 		elif(canSave) :
 			setSaveUI(true)
 			absDoAcceptButton(delta)

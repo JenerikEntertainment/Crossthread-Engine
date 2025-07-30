@@ -4,6 +4,7 @@ extends Node
 var direction : Vector2 = Vector2.ZERO
 
 var moving : bool = false
+@export var attacking : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,9 +13,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	doDirectionAnimation()
+	if !attacking :
+		doMoveIdleAnimation()
+	elif attacking :
+		doAttackAnimation()
 
-func doDirectionAnimation() :
+func doMoveIdleAnimation() :
 	#print(moving)
 	if !moving :
 			
@@ -37,3 +41,17 @@ func doDirectionAnimation() :
 		elif direction.x < 0 :
 			$".".play("walk_right")
 	#$"../AnimationTree".tree_root.set_parameter('blend_position', direction)
+
+func doAttackAnimation() :
+		if direction.y > 0 :
+			$".".play("attack_up_1")
+		elif direction.y < 0 :
+			$".".play("attack_down_1")
+		elif direction.x > 0 :
+			$".".play("attack_left_1")
+		elif direction.x < 0 :
+			$".".play("attack_right_1")
+
+
+func doResetAnimation() :
+	$".".play("RESET")

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Crossthread Engine 2.0"
-run/main_scene="uid://bqtbq44d8lend"
+run/main_scene="uid://dafldkf3oaqk6"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -23,13 +23,9 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 directories/dch_directory={}
 directories/dtl_directory={
-"Dialogic Timelines/default_convo": "res://Projects/Knights of Eyres/Dialogic Timelines/default_convo.dtl",
 "default_convo": "res://Projects/Default Project Template/Dialogic Timelines/default_convo.dtl"
 }
-layout/style_directory={
-"": "res://Projects/Knights of Eyres/Dialogic Timelines/Styles/KOE Styles.tres",
-"KOE Styles": "res://Projects/Knights of Eyres/Dialogic Timelines/Styles/KOE Styles.tres"
-}
+layout/style_directory={}
 glossary/default_case_sensitive=true
 variables={}
 layout/style_list=["res://Projects/Knights of Eyres/Dialogic Timelines/Styles/KOE Styles.tres"]
